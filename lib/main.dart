@@ -1,4 +1,5 @@
-import 'package:dorya/homepage.dart';
+import 'package:dorya/pages/homepage.dart';
+import 'package:dorya/pages/settingpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return MaterialApp(
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+      routes: {
+        "/": (context) => HomePage(),
+        "/setting": (context) => SettingPage()
+      },
+    );
   }
 }
