@@ -1,7 +1,15 @@
+import 'package:dorya/utils/routes.dart';
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  String name = "";
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +21,7 @@ class SettingPage extends StatelessWidget {
           Image.asset("assetz/images/loginimg.png", fit: BoxFit.cover),
           SizedBox(height: 20),
           Text(
-            "Welcome to Thanwala",
+            "Welcome $name",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Padding(
@@ -23,6 +31,10 @@ class SettingPage extends StatelessWidget {
                 TextFormField(
                   decoration: InputDecoration(
                       hintText: "Enter Your User Name", labelText: "User"),
+                  onChanged: (value) {
+                    name = value;
+                    setState(() {});
+                  },
                 ),
                 TextFormField(
                   obscureText: true,
@@ -31,7 +43,9 @@ class SettingPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, MyRoutes.homeRoute);
+                  },
                   child: Text(
                     "Login",
                     style: TextStyle(color: Colors.white),
